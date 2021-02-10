@@ -29,7 +29,7 @@ router.post('/', async function(req,res){
                 })
                 await admin.save()
                 const token = jwt.sign({_id: admin._id}, privateKey, {expiresIn: 60*60000})
-                res.cookie('jwt', token, {maxAge: 60*60000}).redirect('/admin')
+                res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/admin')
             }else{
                 const user = new User({
                     username: req.body.name,
@@ -39,7 +39,7 @@ router.post('/', async function(req,res){
                 })
                 await user.save()
                 const token = jwt.sign({_id: user._id}, privateKey, {expiresIn: 60*60000})
-                res.cookie('jwt', token, {maxAge: 60*60000}).redirect('/account')
+                res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/account')
             }
         }
 
