@@ -1,11 +1,8 @@
 const router = require('express').Router();
 
-
-// const {checkOut} = require('../middleware/checkOut');
-
 router.get('/', (req,res)=>{
-  res.render('animals')
+  res.render('tariffs')
 
 })
-  
+
 module.exports = router;
