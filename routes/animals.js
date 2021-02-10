@@ -3,8 +3,8 @@ const Animal = require ('../models/animalModel')
 
 // const {checkOut} = require('../middleware/checkOut');
 
-router.get('/', (req,res)=>{
-  const animals = Animal.find()
+router.get('/', async (req,res)=>{
+  const animals = await Animal.find()
   console.log(animals);
 
 })
