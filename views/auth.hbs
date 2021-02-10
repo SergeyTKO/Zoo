@@ -1,7 +1,7 @@
 <form id="register" method="POST" action="/auth">
-    <input name="name" placeholder="имя">
-    <input name="email" placeholder="email">
+    <input name="name" placeholder="имя" required>
+    <input type="email" name="email" placeholder="email" required>
      <input name="secretKey" placeholder="секретный код">
-    <input name="password" placeholder="пароль">
+    <input type="password" name="password" placeholder="пароль" required>
     <button>зарегистрироваться</button>
 </form>

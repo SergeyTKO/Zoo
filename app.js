@@ -6,7 +6,7 @@ const hbs = require('hbs')
 
 const { routesConfig } = require('./middleware/routesConfig');
 
-mongoose.connect('mongodb://localhost/SafariPark', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost/Zoo', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const app = express()
