@@ -10,19 +10,20 @@ router.get('/', function(req,res){
 })
 
 router.post('/', async function(req, res){
-    const {username, password, secretKey} = req.body
+    const {name, password} = req.body
     try{
-        const user = await User.findOne({username})
+        const user = await User.findOne({username:name})
+        console.log(user)
         if(user){
             const validPassword = await bcrypt.compare(password, user.password)
             if(validPassword){
                 const token = jwt.sign({_id: user._id}, privateKey, {expiresIn: 60*60000})
-                res.cookie('jwt', token, {maxAge: 60*60000})
+                res.cookie('jwt', token, {maxAge: 60*60000}).redirect('/account')
             }else{
-                res.json({msg: 'Неверный логин или пароль'})    
+                res.json({msg: 'Неверный логин или Пароль'})    
             }
         }else{
-            res.json({msg: 'Неверный логин или пароль'})
+            res.json({msg: 'Неверный Логин или пароль'})
         }
     }catch(err){
         res.json({msg: err.msg})
