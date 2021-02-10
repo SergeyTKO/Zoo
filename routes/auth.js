@@ -6,7 +6,7 @@ const adminKey = 'bullet'
 const privateKey = '-hdye-1ekdkd-d5sjsj-5'
 
 router.get('/', function(req, res){
-    res.render('/auth')
+    res.render('auth')
 })
 
 router.post('/', async function(req,res){
@@ -19,7 +19,7 @@ router.post('/', async function(req,res){
             isAdmin: true
         })
         await admin.save()
-        const token = jwt.sign({_id: admin._id}, privateKey, {expiresIn: 60*60})
+        const token = jwt.sign({_id: admin._id}, privateKey, {expiresIn: '60m'})//!!!!!!!!!!!!!!!!!!60*60
         req.cookies('jwt', token).redirect('/account')
     }else{
         const user = new User({
