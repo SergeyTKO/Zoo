@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const hbs = require('hbs')
 
+const { routesConfig } = require('./middleware/routesConfig');
+
 mongoose.connect('mongodb://localhost/SafariPark', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
@@ -17,5 +19,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
 app.use(cookieParser())
+routesConfig(app)
 
 module.exports = app

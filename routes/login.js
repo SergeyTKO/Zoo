@@ -11,5 +11,7 @@ router.get('/', function(req,res){
 
 router.post('/', async function(req, res){
     const {username, password, secretKey} = req.body
-    
+    try{
+        const user = await 
+    }
 })
