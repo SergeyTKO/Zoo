@@ -13,7 +13,7 @@ const app = express()
 
 app.set('view engine', 'hbs')
 hbs.registerPartials('./views/partials')
-
+app.use(express.static( "public"));
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

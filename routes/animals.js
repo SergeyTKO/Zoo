@@ -1,10 +1,11 @@
 const router = require('express').Router();
-
+const Animal = require ('../models/animalModel') 
 
 // const {checkOut} = require('../middleware/checkOut');
 
 router.get('/', (req,res)=>{
-  res.render('animals')
+  const animals = Animal.find()
+  console.log(animals);
 
 })
   
