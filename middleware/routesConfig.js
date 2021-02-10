@@ -3,7 +3,7 @@ const animalsRouter = require('../routes/animals');
 const galleryRouter = require('../routes/gallery');
 const contactsRouter = require('../routes/contacts')
 
-module.exports.routersConfig = (application) => {
+module.exports.routesConfig = (application) => {
     application.use(loginRouter);
     application.use(signUpRouter);
     application.use(logoutRouter)
