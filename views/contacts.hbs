@@ -1,1 +1,23 @@
-контакты
+<head>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1c62ca23-3e5b-442c-85e2-2f7327a462da&lang=ru_RU" type="text/javascript">
+    </script>
+</head>
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    
+
+    <script type="text/javascript">
+    
+    ymaps.ready(init);
+    function init(){
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+           
+            center: [55.76, 37.64],
+          
+            zoom: 7
+        });
+    }
+</script>
+</body>
+
