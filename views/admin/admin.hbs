@@ -1,12 +1,15 @@
 <li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
 
-<form action="/admin/animal" method='post'>
+
+
+
+<form action="/admin/animal"  method='post' enctype="multipart/form-data">
     <label for="animal-name">Название животного</label>
     <input type="text" name="animalName" id="animal-name">
     <label for="desc">Описание животного</label>
     <input type="text" name="desc" id="desc">
     <label for="photo">Фотография животного</label>
-    <input type="file" name='photo' id="photo">
+    <input type="file" name="avatar" id="photo">
     <button type='submit'>Сохранить</button>
 </form>
 
