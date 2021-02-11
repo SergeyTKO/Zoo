@@ -1,4 +1,4 @@
-const { localsAsTemplateData } = require("hbs")
+const jwt = require('jsonwebtoken')
 
 module.exports = function(req,res,next){
     if(req.cookies.jwt){
