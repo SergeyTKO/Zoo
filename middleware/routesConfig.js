@@ -7,9 +7,11 @@ const contactsRouter = require("../routes/contacts");
 const logoutRouter = require('../routes/logout')
 const localsChecker = require('../middleware/localsChecker')
 const adminRouter = require('../routes/admin')
+const cardRouter = require('../routes/card')
 
 module.exports.routesConfig = (application) => {
   application.use("/login", loginRouter);
+  application.use("/card", cardRouter);
   application.use("/auth", authRouter);
   application.use('/logout', logoutRouter)
   application.use(localsChecker, mainRouter);
