@@ -40,14 +40,13 @@ router.put('/animal/:id', async function(req,res){
     res.render('admin/animalEdit', {animal})
 })
 
-router.get('/animal/:id', async function(req,res){
-    await Animal.deleteOne({_id: req.params.id})
-    res.redirect('/admin')
+router.delete('/animal/:id', async function(req,res){
+  await Animal.deleteOne({_id: req.params.id})
+  res.redirect('/admin')
 })
-
-router.get('/tariff/:id', async function(req,res){
-    await Tariff.deleteOne({_id: req.params.id})
-    res.redirect('/admin')
+router.delete('/tariff/:id', async function(req,res){
+  await Tariff.deleteOne({_id: req.params.id})
+  res.redirect('/admin')
 })
 
 module.exports = router
