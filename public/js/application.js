@@ -1,37 +1,96 @@
 const container = document.querySelector('.container')
-function recurseFetch (){
-  const main = document.querySelector('#main')
+const main = document.querySelector('#main')
 const contacts = document.querySelector('#contacts')
 const animals = document.querySelector('#animals')
+const login = document.querySelector('#login');
+const tariffs = document.querySelector('#tariffs');
+const auth = document.querySelector('#auth');
 
-contacts.addEventListener("click", async (e) =>  {
-  e.preventDefault();
-  console.log(e.target);
-  const response = await fetch(`/contacts`);
 
-  const result = await response.json();
-  const resp = await fetch(`/template/contacts.hbs`);
 
-  const hbs = await resp.text();
-  const template = Handlebars.compile(hbs); // компилирует шаблон 
-  console.log(template());
 
-  container.innerHTML = template();
-  ymaps.ready(init);
-  recurseFetch()
-})
 
-animals.addEventListener("click", async(e) =>  {
- e.preventDefault();
- console.log(e.target);
-  const response = await fetch(`/animals`);
-  const animal = await response.json();
-  const resp = await fetch(`/template/animals.hbs`);
-  const hbs = await resp.text();
-  const template = Handlebars.compile(hbs);
-  container.innerHTML = template(animal);
-  recurseFetch()
-})
+function recurseFetch() {
+
+  contacts.addEventListener("click", async (e) => {
+    e.preventDefault();
+    ;
+    const response = await fetch(`/contacts`);
+
+    const result = await response.json();
+    const resp = await fetch(`/template/contacts.hbs`);
+
+    const hbs = await resp.text();
+    const template = Handlebars.compile(hbs); // компилирует шаблон 
+
+
+    container.innerHTML = template();
+    ymaps.ready(init);
+    recurseFetch()
+  })
+
+  animals.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const response = await fetch(`/animals`);
+    const animal = await response.json();
+    const resp = await fetch(`/template/animals.hbs`);
+    const hbs = await resp.text();
+    const template = Handlebars.compile(hbs);
+    container.innerHTML = template(animal);
+    recurseFetch()
+  })
+
+  login.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/login');
+    // const login = await response.json()
+    const res = await fetch('/template/login.hbs')
+    const hbs = await res.text();
+    const template = Handlebars.compile(hbs);
+    container.innerHTML = template()
+    recurseFetch()
+  })
+
+  tariffs.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/tariffs');
+    // const tariffs = await response.json();
+    const res = await fetch('/template/tariffs.hbs');
+    const hbs = await res.text();
+    const template = Handlebars.compile(hbs);
+    container.innerHTML = template()
+    recurseFetch()
+  })
+
+
+  main.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/');
+    // const tariffs = await response.json();
+    const res = await fetch('/template/main.hbs');
+    const hbs = await res.text();
+    const template = Handlebars.compile(hbs);
+    container.innerHTML = template()
+    recurseFetch()
+  })
+
+  auth.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('/auth');
+    // const tariffs = await response.json();
+    const res = await fetch('/template/auth.hbs');
+    const hbs = await res.text();
+    const template = Handlebars.compile(hbs);
+    container.innerHTML = template()
+    recurseFetch()
+  })
+
+
 }
 
 recurseFetch()
