@@ -25,7 +25,7 @@
         {{#each animals}}
         <li>
             <p>{{name}}</p>
-            <button type="submit">изменить</button>
+            <a href="/admin/animal/{{_id}}">изменить</a>
             <a href="/admin/animal/{{_id}}">удалить</a>
         </li>
         {{/each}}
@@ -42,7 +42,8 @@
         {{#each tariffs}}
         <li>
             <p>{{name}}</p>
-            <button type="submit">изменить</button>
+            <a href="/admin"></a>
+            <a href="/admin/tariff/{{_id}}">изменить</a>
             <a href="/admin/tariff/{{_id}}">удалить</a>
         </li>
         {{/each}}
