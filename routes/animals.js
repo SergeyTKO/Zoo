@@ -3,8 +3,9 @@ const Animal = require ('../models/animalModel')
 
 
 router.get('/', async (req,res)=>{
-  const animals = await Animal.findOne()
+  const animals = await Animal.find()
   res.json(animals)
+  // res.render(animals)
 
 })
   
