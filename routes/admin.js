@@ -10,18 +10,13 @@ const path = require('path')
 router.post('/animal', upload.single('avatar'), async function(req,res){
     const {animalName, desc} = req.body
     const {file} = req.file
-    
-    const buf = await fs.writeFile(path.join(__dirname,`../public/uploads`,`${req.file.originalname}`),req.file.buffer)
-    console.log('>>>>>>>>>',req.file)
-    // console.log('body',req.body)
+    await fs.writeFile(path.join(__dirname,`../uploads`,`${req.file.originalname}`),req.file.buffer)
     const animal = new Animal({
         name: animalName,
         desc,
         file: `../uploads/${req.file.originalname}`
-
     })
     await animal.save()
-    // console.log('animal', animal)
     res.redirect('/admin')
 })
 
@@ -35,17 +30,34 @@ router.post('/tariff', async function(req,res){
     res.redirect('/admin')
 })
 
-router.put('/animal/:id', async function(req,res){
+router.get('/animal/:id', async function(req,res){
     const animal = await Animal.findById(req.params.id)
     res.render('admin/animalEdit', {animal})
 })
 
-router.get('/animal/:id', async function(req,res){
-    await Animal.deleteOne({_id: req.params.id})
+router.post('/animal/:id', async function(req,res) {
+    const {animalName, desc} = req.body
+    await Animal.updateOne({_id: req.params.id}, {name: animalName, desc})
     res.redirect('/admin')
 })
 
 router.get('/tariff/:id', async function(req,res){
+    const tariff = await Tariff.findById(req.params.id)
+    res.render('admin/tariffEdit', {tariff})
+})
+
+router.post('/tariff/:id', async function(req,res) {
+    const {tariffName, price} = req.body
+    await Tariff.updateOne({_id: req.params.id}, {name: tariffName, price})
+    res.redirect('/admin')
+})
+
+router.delete('/animal/:id', async function(req,res){
+    await Animal.deleteOne({_id: req.params.id})
+    res.redirect('/admin')
+})
+
+router.delete('/tariff/:id', async function(req,res){
     await Tariff.deleteOne({_id: req.params.id})
     res.redirect('/admin')
 })

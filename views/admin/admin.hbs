@@ -26,10 +26,13 @@
     <ul>
         {{#if animals}}
         {{#each animals}}
-        <li>
+        <li class="animal" data-id="{{_id}}">
             <p>{{name}}</p>
-            <button type="submit">изменить</button>
-            <a href="/admin/animal/{{_id}}">удалить</a>
+            <a href="/admin/animal/{{_id}}">изменить</a>
+            <form method="POST" action="/admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">удалить</button>
+</form>
         </li>
         {{/each}}
         {{else}}
@@ -45,8 +48,12 @@
         {{#each tariffs}}
         <li>
             <p>{{name}}</p>
-            <button type="submit">изменить</button>
-            <a href="/admin/tariff/{{_id}}">удалить</a>
+            <a href="/admin"></a>
+            <a href="/admin/tariff/{{_id}}">изменить</a>
+            <form method="POST" action="/admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">удалить</button>
+</form>
         </li>
         {{/each}}
         {{else}}
