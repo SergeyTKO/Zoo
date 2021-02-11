@@ -17,7 +17,7 @@ router.get('/admin', loginChecker, async function(req,res){
   const tariffs = await Tariff.find()
   const animals = await Animal.find()
   res.locals.boss = true
-  res.render('admin', {tariffs:tariffs, animals:animals})
+  res.render('admin/admin', {tariffs:tariffs, animals:animals})
 })
 
 module.exports = router;

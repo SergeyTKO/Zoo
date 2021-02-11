@@ -1,15 +1,20 @@
         <li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
 
         <form action="/admin/animal" method='post'>
-        <input type="text" name="animalName" placeholder="Название животного">
-        <input type="text" name="desc" placeholder="Описание животного">
-        <input type="file">
+        <label for="animal-name">Название животного</label>
+        <input type="text" name="animalName" id="animal-name">
+        <label for="desc">Описание животного</label>
+        <input type="text" name="desc" id="desc">
+        <label for="photo">Фотография животного</label>
+        <input type="file" name='photo' id="photo">
         <button type='submit'>Сохранить</button>
         </form>
 
         <form action="/admin/tariff" method='post'>
-        <input type="text" name="tariffName" placeholder="Название тарифа">
-        <input type="number" name="price" placeholder="Цена">
+        <label for="tariff-name">Название тарифа</label>
+        <input type="text" name="tariffName" id="tariff-name">
+        <label for="price">Цена</label>
+        <input type="number" name="price" id="price">
         <button type='submit'>Сохранить</button>
         </form>
 

@@ -24,6 +24,11 @@ router.post('/tariff', async function(req,res){
     res.redirect('/')
 })
 
+router.put('/animal/:id', async function(req,res){
+    const animal = await Animal.findById(req.params.id)
+    res.render('animal/edit', {animal})
+})
+
 
 
 module.exports = router
