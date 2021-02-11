@@ -1,13 +1,14 @@
 const navList_links = document.querySelectorAll(".navList_link");
 
 async function contactPage(path) {
+  console.log(path);
   const response = await fetch(`${path}`);
 
   const result = await response.json();
   const resp = await fetch(`/template${path}.hbs`);
 
   const hbs = await resp.text();
-  const template = Handlebars.compile(hbs);
+  const template = Handlebars.compile(hbs); // компилирует шаблон 
   console.log(template());
 
   document.body.innerHTML += template();
@@ -15,20 +16,18 @@ async function contactPage(path) {
 }
 
 async function animalPage(path) {
+  console.log(path);
   const response = await fetch(`${path}`);
-
-  const result = await response.json();
+  const animal = await response.json();
   const resp = await fetch(`/template${path}.hbs`);
 
   const hbs = await resp.text();
   const template = Handlebars.compile(hbs);
-  console.log(template());
-
-  document.body.innerHTML += template();
+  document.body.innerHTML += template(animal);
 }
 
 for (let btn of navList_links) {
-  btn.addEventListener("click", async (e) => {
+  btn.addEventListener("click", (e) => {
     e.preventDefault();
     let path = btn.getAttribute("href");
 
