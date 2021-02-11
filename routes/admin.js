@@ -16,16 +16,14 @@ router.post('/animal', async function(req,res){
 
 router.post('/tariff', async function(req,res){
     const {tariffName, price} = req.body
-    const foundTariff = await Tariff.findOne({name:tariffName.toLowerCase()})
-    if(foundTariff){
-        await Tariff.updateOne({name:tariffName.toLowerCase()}, {price})
-    }else{
-        await Tariff.create({
+    await Tariff.create({
             name: tariffName.toLowerCase(),
             price
         })
-    }
+    
     res.redirect('/')
 })
+
+
 
 module.exports = router
