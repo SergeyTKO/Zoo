@@ -29,6 +29,7 @@ router.post('/', async function(req,res){
                 })
                 await admin.save()
                 const token = jwt.sign({_id: admin._id}, privateKey, {expiresIn: 60*60000})
+                res.locals.isAdmin = true
                 res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/admin')
             }else{
                 const user = new User({

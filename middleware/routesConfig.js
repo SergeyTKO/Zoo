@@ -11,8 +11,8 @@ module.exports.routesConfig = (application) => {
   application.use("/login", loginRouter);
   application.use("/auth", authRouter);
   application.use('/logout', logoutRouter)
-  application.use(localsChecker, mainRouter);//
+  application.use(localsChecker, mainRouter);
   application.use("/tariffs", tariffsRouter);
-  application.use("/contacts",  contactsRouter);//
-  application.use("/animals",  animalsRouter);//
+  application.use("/contacts",  contactsRouter);
+  application.use("/animals",  animalsRouter);
 };

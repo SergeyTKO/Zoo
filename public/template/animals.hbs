@@ -1,5 +1,13 @@
 <div class="card" id = 'list'>
     <h1>Животныеееее</h1>
+    {{#if isAdmin}}
+        <form action="">
+        <input type="text" placeholder="Название животного">
+        <input type="text" placeholder="Описание животного">
+        <input type="file">
+        <button>Сохранить</button>
+        </form>
+        {{/if}}
  
     <div class="animalPreview">
         {{name}}
