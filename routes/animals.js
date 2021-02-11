@@ -3,9 +3,9 @@ const Animal = require ('../models/animalModel')
 
 // const {checkOut} = require('../middleware/checkOut');
 
-router.get('/', (req,res)=>{
-  const animals = Animal.find()
-  console.log(animals);
+router.get('/', async (req,res)=>{
+  const animals = await Animal.findOne()
+  res.json(animals)
 
 })
   
