@@ -19,6 +19,13 @@ function recurseFetch() {
     const template = Handlebars.compile(hbs); // компилирует шаблон
 
     container.innerHTML = template();
+    function init() {
+      // Создание карты.
+      let myMap = new ymaps.Map("map", {
+          center: [55.76, 37.64],
+          zoom: 7
+      });
+  }
     ymaps.ready(init);
     recurseFetch();
   });
@@ -47,7 +54,7 @@ function recurseFetch() {
     const cardButton = document.querySelectorAll(".cardButton");
     for(let btn of cardButton){
       btn.addEventListener("click", async(e) => {
-        const animalShow = document.querySelector(".animalShow");
+       
     const animalName = e.target.id;
     const animalResponse = await fetch('/card', {
       method: 'POST',
