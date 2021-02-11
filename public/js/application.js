@@ -8,28 +8,6 @@ const auth = document.querySelector("#auth");
 const card = document.querySelector(".card");
 
 function recurseFetch() {
-  contacts.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const response = await fetch(`/contacts`);
-
-    const result = await response.json();
-    const resp = await fetch(`/template/contacts.hbs`);
-
-    const hbs = await resp.text();
-    const template = Handlebars.compile(hbs); // компилирует шаблон
-
-    container.innerHTML = template();
-    function init() {
-      // Создание карты.
-      let myMap = new ymaps.Map("map", {
-          center: [55.76, 37.64],
-          zoom: 7
-      });
-  }
-    ymaps.ready(init);
-    recurseFetch();
-  });
-
   animals.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -72,9 +50,6 @@ function recurseFetch() {
    animalDesc.innerHTML=animalResp[0].desc
       });
     }
-
-
-    recurseFetch();
   });
 
   login.addEventListener("click", async (e) => {
@@ -86,44 +61,63 @@ function recurseFetch() {
     const hbs = await res.text();
     const template = Handlebars.compile(hbs);
     container.innerHTML = template();
-    recurseFetch();
   });
 
   tariffs.addEventListener("click", async (e) => {
     e.preventDefault();
 
     const response = await fetch("/tariffs");
-    // const tariffs = await response.json();
+
     const res = await fetch("/template/tariffs.hbs");
     const hbs = await res.text();
     const template = Handlebars.compile(hbs);
     container.innerHTML = template();
-    recurseFetch();
+
   });
 
   main.addEventListener("click", async (e) => {
     e.preventDefault();
 
     const response = await fetch("/");
-    // const tariffs = await response.json();
+ 
     const res = await fetch("/template/main.hbs");
     const hbs = await res.text();
     const template = Handlebars.compile(hbs);
     container.innerHTML = template();
-    recurseFetch();
+
   });
 
   auth.addEventListener("click", async (e) => {
     e.preventDefault();
 
     const response = await fetch("/auth");
-    // const tariffs = await response.json();
+
     const res = await fetch("/template/auth.hbs");
     const hbs = await res.text();
     const template = Handlebars.compile(hbs);
     container.innerHTML = template();
     recurseFetch();
   });
+
+  contacts.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const response = await fetch(`/contacts`);
+    // const result = await response.json();
+    const resp = await fetch(`/template/contacts.hbs`);
+    const hbs = await resp.text();
+    const template = Handlebars.compile(hbs); // компилирует шаблон
+    container.innerHTML = template();
+    function init() {
+      // Создание карты.
+      let myMap = new ymaps.Map("map", {
+          center: [55.76, 37.64],
+          zoom: 7
+      });
+  }
+    ymaps.ready(init);
+  
+  });
 }
 
 recurseFetch();
+
