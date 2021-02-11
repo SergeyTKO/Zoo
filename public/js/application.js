@@ -1,31 +1,43 @@
-// const navList_links = document.querySelectorAll(".navList_link");
-// async function staticPage(path){
+const navList_links = document.querySelectorAll(".navList_link");
 
-//     const response = await fetch(`${path}`);
-   
-//     const result = await response.json();
-//     const resp = await fetch(`/template${path}.hbs`);
-   
+async function contactPage(path) {
+  console.log(path);
+  const response = await fetch(`${path}`);
 
-//     const hbs = await resp.text();
-//     const template = Handlebars.compile(hbs);
-//     console.log(template());
+  const result = await response.json();
+  const resp = await fetch(`/template${path}.hbs`);
 
-//     document.body.innerHTML += template();
-//     ymaps.ready(init);
-// }
+  const hbs = await resp.text();
+  const template = Handlebars.compile(hbs); // компилирует шаблон 
+  console.log(template());
 
-// for (let btn of navList_links) {
-//   btn.addEventListener("click", async (e) => {
-//     e.preventDefault();
-//     let path = btn.getAttribute("href");
+  document.body.innerHTML += template();
+  ymaps.ready(init);
+}
 
-// //     switch (path){
-// //     case '/contacts':
-// //         staticPage(path)
-// // }
-// if(path==='/contacts'){
-//     staticPage(path)
-// }
-//   });
-// }
+async function animalPage(path) {
+  console.log(path);
+  const response = await fetch(`${path}`);
+  const animal = await response.json();
+  const resp = await fetch(`/template${path}.hbs`);
+
+  const hbs = await resp.text();
+  const template = Handlebars.compile(hbs);
+  document.body.innerHTML += template(animal);
+}
+
+for (let btn of navList_links) {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let path = btn.getAttribute("href");
+
+    switch (path) {
+      case "/contacts":
+        contactPage(path);
+        break;
+      case "/animals":
+        animalPage(path);
+        break;
+    }
+  });
+}
