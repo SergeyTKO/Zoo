@@ -11,7 +11,7 @@ router.post('/animal', upload.single('avatar'), async function(req,res){
     const {animalName, desc} = req.body
     const {file} = req.file
     
-    const buf = await fs.writeFile(path.join(__dirname,`../uploads`,`${req.file.originalname}`),req.file.buffer)
+    const buf = await fs.writeFile(path.join(__dirname,`../public/uploads`,`${req.file.originalname}`),req.file.buffer)
     console.log('>>>>>>>>>',req.file)
     // console.log('body',req.body)
     const animal = new Animal({
