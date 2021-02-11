@@ -3,5 +3,8 @@ module.exports = function (req, res, next) {
     res.locals.login = true;
     console.log(res.locals.login);
     next();
+  }else{
+    res.locals.login = false
+    next()
   }
 };
