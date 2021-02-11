@@ -9,11 +9,54 @@
 
         <form action="/admin/tariff" method='post'>
         <input type="text" name="tariffName" placeholder="Название тарифа">
-        <select name="tariffName" id="">
-            {{#each tariffs}}
-            <option value="">{{name}}</option>
-            {{/each}}
-        </select>
         <input type="number" name="price" placeholder="Цена">
         <button type='submit'>Сохранить</button>
         </form>
+
+        <div class="animal-wrapper">
+            <h1>Изменить данные о животных</h1>
+            <ul>
+                {{#each animals}}
+                <li>
+                    <p>{{name}}</p>
+                   
+                       <form method="POST" action="admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="PUT">
+        <button type="submit">изменить</button>
+        </form>
+                    
+
+   <form method="POST" action="admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">удалить</button>
+        </form>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        <div class="tariffs-wrapper">
+            <h1>Изменить данные о тарифах</h1>
+            <ul>
+                {{#each tariffs}}
+                <li>
+
+                    <p>{{name}}</p>
+
+                       <form method="POST" action="admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="PUT">
+        <button type="submit">изменить</button>
+        </form>
+                    
+
+   <form method="POST" action="admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">удалить</button>
+        </form>
+
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+
+
