@@ -1,43 +1,38 @@
-const navList_links = document.querySelectorAll(".navList_link");
+const container = document.querySelector('.container')
+function recurseFetch (){
+  const main = document.querySelector('#main')
+const contacts = document.querySelector('#contacts')
+const animals = document.querySelector('#animals')
 
-async function contactPage(path) {
-  console.log(path);
-  const response = await fetch(`${path}`);
+contacts.addEventListener("click", async (e) =>  {
+  e.preventDefault();
+  console.log(e.target);
+  const response = await fetch(`/contacts`);
 
   const result = await response.json();
-  const resp = await fetch(`/template${path}.hbs`);
+  const resp = await fetch(`/template/contacts.hbs`);
 
   const hbs = await resp.text();
   const template = Handlebars.compile(hbs); // компилирует шаблон 
   console.log(template());
 
-  document.body.innerHTML += template();
+  container.innerHTML = template();
   ymaps.ready(init);
-}
+  recurseFetch()
+})
 
-async function animalPage(path) {
-  console.log(path);
-  const response = await fetch(`${path}`);
+animals.addEventListener("click", async(e) =>  {
+ e.preventDefault();
+ console.log(e.target);
+  const response = await fetch(`/animals`);
   const animal = await response.json();
-  const resp = await fetch(`/template${path}.hbs`);
-
+  const resp = await fetch(`/template/animals.hbs`);
   const hbs = await resp.text();
   const template = Handlebars.compile(hbs);
-  document.body.innerHTML += template(animal);
+  container.innerHTML = template(animal);
+  recurseFetch()
+})
 }
 
-for (let btn of navList_links) {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    let path = btn.getAttribute("href");
+recurseFetch()
 
-    switch (path) {
-      case "/contacts":
-        contactPage(path);
-        break;
-      case "/animals":
-        animalPage(path);
-        break;
-    }
-  });
-}
