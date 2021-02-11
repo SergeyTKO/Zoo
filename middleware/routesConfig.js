@@ -6,6 +6,7 @@ const tariffsRouter = require("../routes/tariffs");
 const contactsRouter = require("../routes/contacts");
 const logoutRouter = require('../routes/logout')
 const localsChecker = require('../middleware/localsChecker')
+const adminRouter = require('../routes/admin')
 
 module.exports.routesConfig = (application) => {
   application.use("/login", loginRouter);
@@ -15,4 +16,5 @@ module.exports.routesConfig = (application) => {
   application.use("/tariffs", tariffsRouter);
   application.use("/contacts",  contactsRouter);
   application.use("/animals",  animalsRouter);
+  application.use('/admin', adminRouter)
 };

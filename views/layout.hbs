@@ -16,10 +16,14 @@
 
 <body>
     <header>
+        {{#unless boss}}
         {{>nav}}
-    </header>
+        {{/unless}}
+     </header>
+
     <div class="container">
     {{{body}}}
+       
     </div>
     <script type="text/javascript">
         function init() {
