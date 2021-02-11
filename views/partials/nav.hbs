@@ -1,15 +1,15 @@
 <nav>
     <ul class="navList">
-        <li class="navList_item"><a href="/" class="navList_link">главная страница</a></li>
-        <li class="navList_item"><a href="/animals" class="navList_link">животные</a></li>
-        <li class="navList_item"><a href="/contacts" class="navList_link">контакты</a></li>
-        <li class="navList_item"><a href="/tariffs" class="navList_link">тарифы</a></li>
+        <li class="navList_item"><a id="main" href="/" class="navList_link">главная страница</a></li>
+        <li class="navList_item"><a id="animals" href="/animals" class="navList_link">животные</a></li>
+        <li class="navList_item"><a  id="contacts" href="/contacts" class="navList_link">контакты</a></li>
+        <li class="navList_item"><a id="tariffs" href="/tariffs" class="navList_link">тарифы</a></li>
         {{#unless login}}
-        <li class="navList_item"><a href="/login" class="navList_link">вход</a></li>
-        <li class="navList_item"><a href="/auth" class="navList_link">зарегистрироваться</a></li>
+        <li class="navList_item"><a id="login" href="/login" class="navList_link">вход</a></li>
+        <li class="navList_item"><a id="auth" href="/auth" class="navList_link">зарегистрироваться</a></li>
         {{/unless}}
         {{#if login}}
-        <li class="navList_item"><a href="/logout" class="navList_link">выход</a></li>
+        <li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
         {{/if}}
     </ul>
 
