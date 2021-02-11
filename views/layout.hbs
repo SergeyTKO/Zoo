@@ -7,8 +7,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/normalize.css">
- <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script defer src="/js/application.js"></script>
+    <script defer src="https://api-maps.yandex.ru/2.1/?apikey=1c62ca23-3e5b-442c-85e2-2f7327a462da&lang=ru_RU"
+        type="text/javascript">
+        </script>
 </head>
 
 <body>
@@ -16,6 +19,15 @@
         {{>nav}}
     </header>
     {{{body}}}
+    <script type="text/javascript">
+        function init() {
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 7
+            });
+        }
+    </script>
 
 </body>
 
