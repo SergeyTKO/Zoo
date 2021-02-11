@@ -9,7 +9,7 @@ module.exports = function(req,res,next){
                 res.redirect('/login')
             }else{
                 console.log(decoded)
-                res.locals.login = true
+                // res.locals.login = true
                 console.log(res.locals.login)
                 next()
             }
@@ -19,3 +19,4 @@ module.exports = function(req,res,next){
         res.redirect('/login')
     }
 }
+
