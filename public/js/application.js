@@ -46,6 +46,9 @@ function recurseFetch() {
     const animalResp = await animalResponse.json()
    const animalh1Name = document.querySelector('.animalName')
    const animalDesc = document.querySelector('.animalDesc')
+   const animalFile = document.querySelector('.animalFile')
+  
+   animalFile.src=animalResp[0].file
    animalh1Name.innerHTML=animalResp[0].name
    animalDesc.innerHTML=animalResp[0].desc
       });
