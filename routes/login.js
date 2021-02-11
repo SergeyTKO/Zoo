@@ -19,11 +19,12 @@ router.post('/', async function(req, res){
 
              user = await User.findOne({username:name}) 
         }
-        console.log(user)
         if(user){
             const validPassword = await bcrypt.compare(password, user.password)
             if(validPassword){
                 const token = jwt.sign({_id: user._id}, privateKey, {expiresIn: 60*60000})
+                res.locals.adminCab = true
+                console.log('isAdmin',res.locals.adminCab);
                 res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/account')
             }else{
                 res.json({msg: 'Неверный логин или Пароль'})    

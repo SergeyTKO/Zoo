@@ -29,8 +29,9 @@ router.post('/', async function(req,res){
                 })
                 await admin.save()
                 const token = jwt.sign({_id: admin._id}, privateKey, {expiresIn: 60*60000})
-                res.locals.isAdmin = true
-                res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/admin')
+                res.locals.adminCab = true
+                console.log('isAdmin',res.locals.adminCab);
+                res.cookie('jwt', token, {maxAge: 60*60000, httpOnly: true}).redirect('/account')
             }else{
                 const user = new User({
                     username: req.body.name,
