@@ -10,7 +10,7 @@ const path = require('path')
 router.post('/animal', upload.single('avatar'), async function(req,res){
     const {animalName, desc} = req.body
     const {file} = req.file
-    await fs.writeFile(path.join(__dirname,`../uploads`,`${req.file.originalname}`),req.file.buffer)
+    await fs.writeFile(path.join(__dirname,`../public/uploads`,`${req.file.originalname}`),req.file.buffer)
     const animal = new Animal({
         name: animalName,
         desc,
