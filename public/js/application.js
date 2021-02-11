@@ -7,8 +7,6 @@ const tariffs = document.querySelector("#tariffs");
 const auth = document.querySelector("#auth");
 const card = document.querySelector(".card");
 
-const 
-
 function recurseFetch() {
   animals.addEventListener("click", async (e) => {
     e.preventDefault();
