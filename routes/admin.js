@@ -11,24 +11,32 @@ router.post('/animal', async function(req,res){
     })
     await animal.save()
     console.log('animal', animal)
-    res.redirect(`/${animal._id}`)
+    res.redirect('/admin')
 })
 
 router.post('/tariff', async function(req,res){
     const {tariffName, price} = req.body
     await Tariff.create({
-            name: tariffName.toLowerCase(),
+            name: tariffName,
             price
         })
     
-    res.redirect('/')
+    res.redirect('/admin')
 })
 
 router.put('/animal/:id', async function(req,res){
     const animal = await Animal.findById(req.params.id)
-    res.render('animal/edit', {animal})
+    res.render('admin/animalEdit', {animal})
 })
 
+router.get('/animal/:id', async function(req,res){
+    await Animal.deleteOne({_id: req.params.id})
+    res.redirect('/admin')
+})
 
+router.get('/tariff/:id', async function(req,res){
+    await Tariff.deleteOne({_id: req.params.id})
+    res.redirect('/admin')
+})
 
 module.exports = router

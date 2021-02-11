@@ -1,67 +1,53 @@
-        <li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
+<li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
 
-        <form action="/admin/animal" method='post'>
-        <label for="animal-name">Название животного</label>
-        <input type="text" name="animalName" id="animal-name">
-        <label for="desc">Описание животного</label>
-        <input type="text" name="desc" id="desc">
-        <label for="photo">Фотография животного</label>
-        <input type="file" name='photo' id="photo">
-        <button type='submit'>Сохранить</button>
-        </form>
+<form action="/admin/animal" method='post'>
+    <label for="animal-name">Название животного</label>
+    <input type="text" name="animalName" id="animal-name">
+    <label for="desc">Описание животного</label>
+    <input type="text" name="desc" id="desc">
+    <label for="photo">Фотография животного</label>
+    <input type="file" name='photo' id="photo">
+    <button type='submit'>Сохранить</button>
+</form>
 
-        <form action="/admin/tariff" method='post'>
-        <label for="tariff-name">Название тарифа</label>
-        <input type="text" name="tariffName" id="tariff-name">
-        <label for="price">Цена</label>
-        <input type="number" name="price" id="price">
-        <button type='submit'>Сохранить</button>
-        </form>
+<form action="/admin/tariff" method='post'>
+    <label for="tariff-name">Название тарифа</label>
+    <input type="text" name="tariffName" id="tariff-name">
+    <label for="price">Цена</label>
+    <input type="number" name="price" id="price">
+    <button type='submit'>Сохранить</button>
+</form>
 
-        <div class="animal-wrapper">
-            <h1>Изменить данные о животных</h1>
-            <ul>
-                {{#each animals}}
-                <li>
-                    <p>{{name}}</p>
-                   
-                       <form method="POST" action="admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="_method" value="PUT">
-        <button type="submit">изменить</button>
-        </form>
-                    
+<div class="animal-wrapper">
+    <h1>Изменить данные о животных</h1>
+    <ul>
+        {{#if animals}}
+        {{#each animals}}
+        <li>
+            <p>{{name}}</p>
+            <button type="submit">изменить</button>
+            <a href="/admin/animal/{{_id}}">удалить</a>
+        </li>
+        {{/each}}
+        {{else}}
+        <p>Вы пока ничего не добавили</p>
+        {{/if}}
+    </ul>
+</div>
 
-   <form method="POST" action="admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit">удалить</button>
-        </form>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-
-        <div class="tariffs-wrapper">
-            <h1>Изменить данные о тарифах</h1>
-            <ul>
-                {{#each tariffs}}
-                <li>
-
-                    <p>{{name}}</p>
-
-                       <form method="POST" action="admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="_method" value="PUT">
-        <button type="submit">изменить</button>
-        </form>
-                    
-
-   <form method="POST" action="admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit">удалить</button>
-        </form>
-
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-
-
+<div class="tariffs-wrapper">
+    <h1>Изменить данные о тарифах</h1>
+    <ul>
+        {{#if tariffs}}
+        {{#each tariffs}}
+        <li>
+            <p>{{name}}</p>
+            <button type="submit">изменить</button>
+            <a href="/admin/tariff/{{_id}}">удалить</a>
+        </li>
+        {{/each}}
+        {{else}}
+        <p>Вы пока ничего не добавили</p>
+        {{/if}}
+    </ul>
+</div>
