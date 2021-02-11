@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const Animal = require('../models/animalModel')
-const { updateOne } = require('../models/tariffModel')
 const Tariff = require('../models/tariffModel')
 const multer  = require('multer')
 const storage = multer.memoryStorage()
@@ -11,18 +10,13 @@ const path = require('path')
 router.post('/animal', upload.single('avatar'), async function(req,res){
     const {animalName, desc} = req.body
     const {file} = req.file
-    
-    const buf = await fs.writeFile(path.join(__dirname,`../uploads`,`${req.file.originalname}`),req.file.buffer)
-    console.log('>>>>>>>>>',req.file)
-    // console.log('body',req.body)
+    await fs.writeFile(path.join(__dirname,`../uploads`,`${req.file.originalname}`),req.file.buffer)
     const animal = new Animal({
         name: animalName,
         desc,
         file: `../uploads/${req.file.originalname}`
-
     })
     await animal.save()
-    // console.log('animal', animal)
     res.redirect('/admin')
 })
 
