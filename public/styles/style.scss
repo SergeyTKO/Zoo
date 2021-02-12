@@ -120,24 +120,39 @@ font-weight: normal;
   margin-top: 30px;
 }
 
-.cardAnimal{
+.cardAnimal, .tariffCard{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 800px;
     margin-top: 20px;
     
-    .cardButton{
+    .cardButton, .tariffPreview{
         background-color: black;
         width: 200px;
         height: 110px;
         margin: 5px;
         transition: all .3s ease-in-out;
+        font-size: 0.9rem;
 
         &:hover{
             transform: scale(0.9);
         }
     }
+}
+
+.tariffPreview{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $font-btn-color;
+  text-transform: uppercase;
+
+  h2{
+
+    font-size: 0.9rem;
+  }
 }
 
 .animal-wrapper{
