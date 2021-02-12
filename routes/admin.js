@@ -32,6 +32,7 @@ router.post('/tariff', async function(req,res){
 
 router.get('/animal/:id', async function(req,res){
     const animal = await Animal.findById(req.params.id)
+    res.locals.boss = true
     res.render('admin/animalEdit', {animal})
 })
 
@@ -43,6 +44,7 @@ router.post('/animal/:id', async function(req,res) {
 
 router.get('/tariff/:id', async function(req,res){
     const tariff = await Tariff.findById(req.params.id)
+    res.locals.boss = true
     res.render('admin/tariffEdit', {tariff})
 })
 
