@@ -1,7 +1,10 @@
 const router = require('express').Router();
+const Tariff = require('../models/tariffModel')
 
-router.get('/', (req,res)=>{
-  res.json()
+
+router.get('/', async (req,res)=>{
+  const tariffs = await Tariff.find()
+  res.json(tariffs)
 
 })
 
