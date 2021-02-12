@@ -1,8 +1,9 @@
-<li class="navList_item"><a id="logout" href="/logout" class="navList_link">выход</a></li>
 
+<div class="admin-wrapper">
 
+<li class="navList_item exit"><a id="logout" href="/logout" class="navList_link">выход</a></li>
 
-
+<div class="creating-forms">
 <form action="/admin/animal"  method='post' enctype="multipart/form-data">
     <label for="animal-name">Название животного</label>
     <input type="text" name="animalName" id="animal-name">
@@ -21,7 +22,9 @@
     <button type='submit'>Сохранить</button>
 </form>
 
-<div class="animal-wrapper">
+</div>
+
+<div class="admin-animal-wrapper">
     <h1>Изменить данные о животных</h1>
     <ul>
         {{#if animals}}
@@ -29,7 +32,7 @@
         <li class="animal" data-id="{{_id}}">
             <p>{{name}}</p>
             <a href="/admin/animal/{{_id}}">изменить</a>
-            <form method="POST" action="/admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
+            <form class="del-form" method="POST" action="/admin/animal/{{_id}}" enctype="application/x-www-form-urlencoded">
   <input type="hidden" name="_method" value="DELETE">
   <button type="submit">удалить</button>
 </form>
@@ -41,7 +44,7 @@
     </ul>
 </div>
 
-<div class="tariffs-wrapper">
+<div class="admin-tariffs-wrapper">
     <h1>Изменить данные о тарифах</h1>
     <ul>
         {{#if tariffs}}
@@ -50,7 +53,7 @@
             <p>{{name}}</p>
             <a href="/admin"></a>
             <a href="/admin/tariff/{{_id}}">изменить</a>
-            <form method="POST" action="/admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
+            <form class="del-form" method="POST" action="/admin/tariff/{{_id}}" enctype="application/x-www-form-urlencoded">
   <input type="hidden" name="_method" value="DELETE">
   <button type="submit">удалить</button>
 </form>
@@ -61,3 +64,5 @@
         {{/if}}
     </ul>
 </div>
+</div>
+

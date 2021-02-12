@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+$font: "Open Sans", sans-serif;
+$border-color: lightgray;
+$main-color: #f06b0c;
+$nav-links-color: black;
+$nav-color: white;
+$btn-color: $main-color;
+$font-btn-color: white;
+$animal-card-btn-color: white;
+$admin-main-color: #0d0c12;
+$admin-btn-color: lighten($admin-main-color, 50%);
+$admin-font-btn-color: white;
+$admin-font-color: lighten($admin-main-color, 20%);
+$admin-border-color: lighten($admin-main-color, 40%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// default
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+button {
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: $btn-color;
+  padding: 6px 10px;
+  color: $font-btn-color;
+}
+
+input {
+  outline: none;
+  border: 1px solid $border-color;
+  padding: 5px 10px;
+}
+// default end
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-size: 1rem;
+  font-family: $font;
+}
+
+header {
+  display: flex;
+ align-items: flex-end;
+  position: relative;
+  background: url("/img/jumbotron.jpg") 100% 100% no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+  width: inherit;
+
+  nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $nav-color;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid $border-color;
+
+    ul {
+      display: flex;
+      list-style: none;
+
+      li {
+        margin-right: 20px;
+      }
+    }
+
+    a {
+      display: block;
+      color: $nav-links-color;
+      font-weight: bold;
+      transition: all 0.1s linear;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    height: auto;
+    width: inherit;
+
+      
+  .exit{
+    display: block;
+position: absolute;
+top: 5px;
+right: 10px;
+list-style: none;
+text-decoration: none;
+width: 70px;
+height: 25px;
+background-color: transparent;
+color: $admin-font-btn-color;
+font-size: 1rem;
+font-weight: normal;
+  }
+}
+
+.form-wrapper{
+  margin-top: 30px;
+}
+
+.cardAnimal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 800px;
+    margin-top: 20px;
+    
+    .cardButton{
+        background-color: black;
+        width: 200px;
+        height: 110px;
+        margin: 5px;
+        transition: all .3s ease-in-out;
+
+        &:hover{
+            transform: scale(0.9);
+        }
+    }
+}
+
+.animal-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .animalFile{
+        width: 400px;
+        height: 300px;
+        background-size: contain;
+    }
+}
+
+
+.admin-wrapper{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $admin-main-color;
+  color: $admin-font-color;
+  padding: 20px;
+  
+  .creating-forms{
+    display: flex;
+    justify-content: center;
+    width: 640px;
+    border: 1px solid $admin-border-color;
+    padding: 20px;
+
+}
+
+  a, button{
+      text-decoration: none;
+      // width: 70px;
+      // height: 25px;
+      background-color: transparent;
+      color: $admin-btn-color;
+      font-size: 0.9rem;
+      font-weight: normal;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    color: $admin-font-btn-color;
+    align-items: flex-start;
+
+    input{
+      margin-bottom: 8px;
+      margin-top: 5px;
+    }
+  }
+
+ul li{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  border-bottom: $border-color;
+}
+  
+}
