@@ -70,11 +70,25 @@ function recurseFetch() {
     e.preventDefault();
 
     const response = await fetch("/tariffs");
-
+    const tariffRes = await response.json();
+   
     const res = await fetch("/template/tariffs.hbs");
     const hbs = await res.text();
+   
     const template = Handlebars.compile(hbs);
     container.innerHTML = template();
+    const oneTarif = document.querySelector('.tariffCard')
+    const card = await fetch('/template/tarif.hbs')
+    const hbsCard = await card.text();
+    const templateCard = Handlebars.compile(hbsCard);
+    console.log(templateCard());
+   for(let i=0; i< tariffRes.length; i++){
+    oneTarif.innerHTML += templateCard({
+       name: [tariffRes[i].name],
+       price: [tariffRes[i].price],
+     });
+   }
+
 
   });
 
