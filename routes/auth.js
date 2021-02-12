@@ -14,17 +14,17 @@ router.get("/", function (req, res) {
 router.post("/", async function (req, res) {
   const salt = await bcrypt.genSalt(10);
   const password = await bcrypt.hash(req.body.password, salt);
-  const foundUserByName = await User.findOne({ username: req.body.name });
-  const foundUserByMail = await User.findOne({ email: req.body.email });
+  const foundUserByName = await User.findOne({ username: req.body.name.toLowerCase() });
+  const foundUserByMail = await User.findOne({ email: req.body.email.toLowerCase() });
   try {
     if (foundUserByMail || foundUserByName) {
       res.json({ msg: "Такой пользователь уже существует" });
     } else {
       if (req.body.secretKey === adminKey) {
         const admin = new User({
-          username: req.body.name,
+          username: req.body.name.toLowerCase(),
           password,
-          email: req.body.email,
+          email: req.body.email.toLowerCase(),
           isAdmin: true,
         });
         await admin.save();
@@ -36,9 +36,9 @@ router.post("/", async function (req, res) {
           .redirect("/admin");
       } else {
         const user = new User({
-          username: req.body.name,
+          username: req.body.name.toLowerCase(),
           password,
-          email: req.body.email,
+          email: req.body.email.toLowerCase(),
           isAdmin: false,
         });
         await user.save();

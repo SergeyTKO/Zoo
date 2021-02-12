@@ -111,11 +111,13 @@ function recurseFetch() {
     const template = Handlebars.compile(hbs); // компилирует шаблон
     container.innerHTML = template();
     function init() {
-      // Создание карты.
-      let myMap = new ymaps.Map("map", {
-          center: [55.76, 37.64],
-          zoom: 7
-      });
+    
+      ymaps.geocode('Геленджик').then(function (res) {
+        myMap = new ymaps.Map('map', {
+            center: res.geoObjects.get(0).geometry.getCoordinates(),
+            zoom : 10
+        });
+    });
   }
     ymaps.ready(init);
   
