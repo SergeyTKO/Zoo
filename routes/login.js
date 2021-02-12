@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 const privateKey = "-hdye-1ekdkd-d5sjsj-5";
 
 router.get("/", function (req, res) {
-  res.render("login");
+  res.json();
 });
 
 router.post("/", async function (req, res) {
