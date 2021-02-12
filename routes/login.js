@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 const privateKey = "-hdye-1ekdkd-d5sjsj-5";
 
 router.get("/", function (req, res) {
-  res.json();
+  res.render("login");
 });
 
 router.post("/", async function (req, res) {
@@ -14,9 +14,9 @@ router.post("/", async function (req, res) {
   let user;
   try {
     if (name.includes("@")) {
-      user = await User.findOne({ email: name.toLowerCase() });
+      user = await User.findOne({ email: name });
     } else {
-      user = await User.findOne({ username: name.toLowerCase() });
+      user = await User.findOne({ username: name });
     }
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
