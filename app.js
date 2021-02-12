@@ -4,10 +4,13 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const hbs = require('hbs')
 const methodOverride = require('method-override')
+const dotenv = require('dotenv').config()
+
+
 
 const { routesConfig } = require('./middleware/routesConfig');
 
-mongoose.connect('mongodb://localhost/Zoo', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb+srv://${process.env.DB_LOGIN}:${process.env.DB_PASSWORD}@cluster0.ozvba.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const app = express()
