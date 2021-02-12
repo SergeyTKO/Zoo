@@ -11,7 +11,7 @@ const dotenv = require('dotenv').config()
 
 const { routesConfig } = require('./middleware/routesConfig');
 
-mongoose.connect(`mongodb+srv://admin:admin@cluster0.ozvba.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb+srv://admin:adminche@cluster0.ozvba.mongodb.net/test`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 const app = express()
