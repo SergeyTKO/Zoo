@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const hbs = require('hbs')
+const path = require('path')
 const methodOverride = require('method-override')
 const dotenv = require('dotenv').config()
 
@@ -17,11 +18,10 @@ const app = express()
 
 app.set('view engine', 'hbs')
 hbs.registerPartials('./views/partials')
-app.use(express.static( "public"));
+app.use(express.static(path.join(__dirname,"public")));
 app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'))
 app.use(cookieParser())
 app.use(methodOverride('X-HTTP-Method-Override'))
 app.use(methodOverride(function (req, res) {
